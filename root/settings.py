@@ -10,7 +10,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-s^a$mqtp55q7lg+)&!fw=
 # Render'da DEBUG ni False qilish kerak
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+import os
+
+# ... boshqa kodlar ...
+
+ALLOWED_HOSTS = ['render-2-dbz4.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
