@@ -9,9 +9,7 @@
         :root {
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f2d57e 50%, #b8860b 100%);
             --gold: #b8860b;
-            --ivory: #fdfaf5;
             --dark-text: #3d2b1f;
-            --white: #ffffff;
             --shadow: rgba(184, 134, 11, 0.2);
         }
 
@@ -23,25 +21,17 @@
 
         /* --- KIRISH OYNASI (OVERLAY) --- */
         #music-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #ffffff 0%, #f4efdf 100%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fdfaf5;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
-            padding: 50px 0;
+            justify-content: center; /* Markazga yig'ildi */
+            gap: 30px; /* Elementlar orasidagi masofa */
+            padding: 20px;
             text-align: center;
             transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
-        }
-
-        .decor {
-            position: absolute;
-            pointer-events: none;
-            animation: float 6s infinite ease-in-out;
-            opacity: 0.6;
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
         }
 
         .overlay-title {
@@ -51,7 +41,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
-            animation: slideDown 1.5s ease;
         }
 
         .couple-frame {
@@ -60,9 +49,7 @@
             border: 4px solid #d4af37;
             border-radius: 160px 160px 20px 20px;
             overflow: hidden;
-            position: relative;
             box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            animation: zoomPulse 4s infinite ease-in-out;
         }
 
         .couple-frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -78,29 +65,25 @@
             letter-spacing: 4px;
             cursor: pointer;
             box-shadow: 0 10px 30px var(--shadow);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1.5s ease;
-        }
-
-        .btn-premium::after {
-            content: ''; position: absolute; top: -50%; left: -100%;
-            width: 100%; height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            transform: rotate(45deg);
-            animation: shiny 3s infinite;
+            z-index: 10;
         }
 
         /* --- ASOSIY KONTEYNER --- */
         .container {
-            max-width: 450px; margin: 0 auto; background: var(--ivory);
-            min-height: 100vh; border: 12px double #d4af37;
-            box-sizing: border-box; position: relative;
+            max-width: 450px; margin: 0 auto;
+            min-height: 100vh;
+            /* Rasm shu yerga o'rnatildi */
+            background-image: url('fon.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            position: relative;
         }
 
         .top-panel {
             position: fixed; top: 0; width: 100%; max-width: 450px;
-            background: rgba(253, 250, 245, 0.95); display: flex;
+            background: rgba(253, 250, 245, 0.8); display: flex;
             justify-content: space-between; align-items: center;
             padding: 12px 20px; z-index: 1000; border-bottom: 1px solid #d4af37;
             box-sizing: border-box;
@@ -110,72 +93,47 @@
             background: var(--gold-gradient); border: none; color: white;
             width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
             font-size: 18px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px var(--shadow);
         }
 
-        header { text-align: center; padding: 120px 20px 40px; }
+        header { text-align: center; padding: 140px 40px 40px; }
         .names {
             font-family: 'Great Vibes', cursive; font-size: 55px;
             color: var(--gold); margin: 15px 0;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
         }
 
         /* --- TAYMER --- */
         .timer-wrapper { display: flex; justify-content: center; gap: 10px; margin: 30px 0; }
         .timer-unit {
-            background: var(--gold-gradient); color: white; padding: 12px 8px;
-            border-radius: 15px; min-width: 65px; text-align: center;
-            box-shadow: 0 6px 15px var(--shadow);
+            background: #fff; border: 1px solid #d4af37; color: var(--gold);
+            padding: 10px 8px; border-radius: 10px; min-width: 60px; text-align: center;
         }
-        .timer-unit span { display: block; font-size: 24px; font-weight: bold; }
-        .timer-unit label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .timer-unit span { display: block; font-size: 20px; font-weight: bold; }
+        .timer-unit label { font-size: 9px; text-transform: uppercase; }
 
-        section { padding: 30px 25px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); }
-        .divider { width: 80%; height: 1px; background: #d4af37; margin: 30px auto; position: relative; }
-        .divider::after {
-            content: '⚜'; position: absolute; top: -12px; left: 46%;
-            background: var(--ivory); padding: 0 10px; color: var(--gold); font-size: 18px;
-        }
+        section { padding: 30px 40px; text-align: center; }
 
         .btn-action {
             display: inline-block; padding: 15px 35px; background: var(--gold-gradient);
             color: white; text-decoration: none; border-radius: 50px;
-            font-weight: 600; border: none; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 8px 20px var(--shadow);
+            font-weight: 600; border: none; cursor: pointer;
         }
 
-        /* --- KARTA --- */
         .card-box {
-            border: 2px gold inset; padding: 25px; border-radius: 20px;
-            background: white; box-shadow: inset 0 0 15px rgba(212,175,55,0.05);
-            position: relative;
+            border: 1px solid #d4af37; padding: 25px; border-radius: 20px;
+            background: rgba(255,255,255,0.5);
         }
-
-        /* ANIMATSIYALAR */
-        @keyframes shiny { 0% { left: -100%; } 100% { left: 100%; } }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
-        @keyframes zoomPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
-        footer { padding: 50px 40px; text-align: center; font-size: 13px; color: var(--gold); letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <div id="music-overlay">
-    <div class="decor" style="top:10%; left:10%; font-size:30px;">⚜</div>
-    <div class="decor" style="top:25%; right:15%; font-size:25px; animation-delay: 1s;">✨</div>
-    <div class="decor" style="bottom:20%; left:12%; font-size:25px; animation-delay: 2s;">⚜</div>
-    <div class="decor" style="top:45%; right:8%; font-size:22px; animation-delay: 3.5s;">✨</div>
-
     <h2 class="overlay-title">Taklifnoma</h2>
+
+    <button class="btn-premium" onclick="startEverything()">OCHISH </button>
 
     <div class="couple-frame">
         <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" alt="Kuyov va Kelin">
     </div>
-
-    <button class="btn-premium" onclick="startEverything()">OCHISH </button>
 </div>
 
 <div class="container">
@@ -195,8 +153,7 @@
             <p id="txt-guest" style="font-size: 18px; font-weight: 500;">Hurmatli aziz mehmonlar!</p>
             <p id="txt-main-invite">Sizni farzandlarimizning visol oqshomiga lutfan taklif etamiz.</p>
             <p style="margin-top: 20px;"><strong id="txt-date-label">TO'Y SANASI:</strong><br>
-               <span style="font-size: 22px; color: var(--gold);">{{ data.wedding_date|date:"d F" }}</span><br>
-               soat 17:00 da
+               <span style="font-size: 22px; color: var(--gold);">{{ data.wedding_date|date:"d F" }}</span>
             </p>
         </div>
 
@@ -209,29 +166,27 @@
     </header>
 
     <section>
-        <div class="divider"></div>
         <h2 style="color: var(--gold); font-family: 'Great Vibes'; font-size: 40px;" id="txt-venue-label">Manzil</h2>
         <p style="font-size: 20px; color: var(--dark-text);"><strong>{{ data.venue_name }}</strong></p>
-        <p style="margin-bottom: 25px; opacity: 0.9;">{{ data.address }}</p>
-        <a href="http://googleusercontent.com/maps.google.com/5{{ data.address|urlencode }}" target="_blank" class="btn-action" id="txt-map">📍 GEOLOKATSIYA</a>
+        <p style="margin-bottom: 25px;">{{ data.address }}</p>
+        <a href="http://maps.google.com/?q={{ data.address|urlencode }}" target="_blank" class="btn-action" id="txt-map">📍 GEOLOKATSIYA</a>
     </section>
 
-    <section style="background: rgba(212,175,55,0.03);">
+    <section>
         <h2 style="color: var(--gold); font-family: 'Great Vibes'; font-size: 40px;" id="txt-gift-label">To'yona</h2>
         <div class="card-box">
             <p id="card-val" style="font-size: 22px; font-weight: bold; letter-spacing: 2px; color: var(--dark-text);">{{ data.card_number }}</p>
-            <p style="font-size: 13px; margin: 10px 0 20px; text-transform: uppercase; color: var(--gold);">{{ data.card_owner }}</p>
             <button class="btn-action" onclick="copyCard()" id="txt-copy" style="padding: 10px 30px; font-size: 12px;">📋 NUSXA OLISH</button>
         </div>
     </section>
 
     <footer>
-        <p id="txt-footer" style="font-style: italic;">Tashrifingizdan mamnunmiz!</p>
-        <div style="font-size: 10px; margin-top: 20px; opacity: 0.5;">© 2026 INVITE STUDIO</div>
+        <p id="txt-footer" style="font-style: italic; text-align: center; padding: 20px;">Tashrifingizdan mamnunmiz!</p>
     </footer>
 </div>
 
 <script>
+    // Musiqa va boshqa funksiyalar o'zgarishsiz qoldi
     var musicPath = "{% if data.music %}{{ data.music.url }}{% endif %}";
     var audio = null;
     if (musicPath) { audio = new Audio(musicPath); audio.loop = true; }
@@ -240,8 +195,7 @@
         if (audio) { audio.play().catch(e => console.log("Musiqa xatosi")); document.getElementById('m-btn').innerText = "🔊"; }
         const overlay = document.getElementById('music-overlay');
         overlay.style.opacity = '0';
-        overlay.style.transform = 'scale(1.1)';
-        setTimeout(() => { overlay.style.visibility = 'hidden'; }, 1000);
+        setTimeout(() => { overlay.style.display = 'none'; }, 1000);
     }
 
     function toggleMusic(e) {
